@@ -1,0 +1,80 @@
+{
+	"name": "image-to-base64",
+	"version": "0.0.0",
+	"scripts": {
+		"ng": "ng",
+		"start": "ng serve",
+		"build": "ng build",
+		"build:prod": "ng build --prod --aot --build-optimizer",
+		"prod:stats": "ng build --prod --aot --build-optimizer --stats-json",
+		"format": "prettier --single-quote --trailing-comma all --print-width 120 --arrow-parens always --tab-width 4 --write",
+		"tslint": "tslint \"src/**/*.ts\"",
+		"stylelint": "stylelint \"src/**/*.scss\"",
+		"lint": "ng lint \"src/**/*.ts\"",
+		"update": "ng update @angular/cli @angular/core",
+		"update:cli": "ng update @angular/cli",
+		"update:core": "ng update @angular/core",
+		"e2e": "ng e2e",
+		"resources": "node resources/generate-resources.js",
+		"precommit": "lint-staged"
+	},
+	"private": false,
+	"lint-staged": {
+		"src/**/*.ts": [
+			"npm run format",
+			"npm run tslint",
+			"git add"
+		],
+		"src/**/*.scss": [
+			"npm run stylelint",
+			"git add"
+		]
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ofcyln/image-to-base64.git"
+	},
+	"dependencies": {
+		"@angular/animations": "~8.1.2",
+		"@angular/common": "~8.1.2",
+		"@angular/compiler": "~8.1.2",
+		"@angular/core": "~8.1.2",
+		"@angular/forms": "~8.1.2",
+		"@angular/platform-browser": "~8.1.2",
+		"@angular/platform-browser-dynamic": "~8.1.2",
+		"@angular/router": "~8.1.2",
+		"bootstrap": "4.3.1",
+		"rxjs-tslint": "^0.1.7",
+		"rxjs": "~6.4.0",
+		"tslib": "^1.9.0",
+		"zone.js": "~0.9.1"
+	},
+	"devDependencies": {
+		"@angular-devkit/build-angular": "~0.801.2",
+		"@angular/cli": "~8.1.2",
+		"@angular/compiler-cli": "~8.1.2",
+		"@angular/language-service": "~8.1.2",
+		"@types/node": "~8.9.4",
+		"@types/jasmine": "~3.3.8",
+		"@types/jasminewd2": "~2.0.3",
+		"codelyzer": "^5.0.0",
+		"jasmine-core": "~3.4.0",
+		"jasmine-spec-reporter": "~4.2.1",
+		"karma": "~4.1.0",
+		"karma-chrome-launcher": "~2.2.0",
+		"karma-coverage-istanbul-reporter": "~2.0.1",
+		"karma-jasmine": "~2.0.1",
+		"karma-jasmine-html-reporter": "^1.4.0",
+		"protractor": "~5.4.0",
+		"husky": "^0.14.3",
+		"lint-staged": "^4.3.0",
+		"prettier": "^1.18.2",
+		"puppeteer": "^1.18.1",
+		"stylelint": "^9.10.1",
+		"stylelint-config-standard": "^18.3.0",
+		"webpack-bundle-analyzer": "^3.3.2",
+		"ts-node": "~7.0.0",
+		"tslint": "~5.15.0",
+		"typescript": "~3.4.3"
+	}
+}
