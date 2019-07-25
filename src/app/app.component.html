@@ -1,12 +1,11 @@
-<section class="container-fluid container-section font--roboto default--text-color body-text--font-size">
+<section class="container-fluid container-section d-flex flex-column vh-100 font--roboto default--text-color body-text--font-size">
 	<app-header></app-header>
 
-	<article>
+	<article class="d-flex flex-fill flex-column pt-3 pb-3">
 		<app-alert></app-alert>
 
 		<router-outlet></router-outlet>
 	</article>
 
-	<app-footer></app-footer>
+	<app-footer class="pt-3 pb-3"></app-footer>
 </section>
-
