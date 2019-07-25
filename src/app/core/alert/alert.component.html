@@ -1,5 +1,5 @@
-<div class="d-flex flex-column-reverse">
-    <div
+<section class="d-flex flex-column-reverse">
+    <article
         *ngFor="let alert of alerts"
         class="{{ cssClass(alert) }} alert-dismissable row justify-content-md-start align-items-center">
         <div
@@ -10,5 +10,5 @@
         <a
             class="close"
             (click)="removeAlert(alert)">&times;</a>
-    </div>
-</div>
+    </article>
+</section>
