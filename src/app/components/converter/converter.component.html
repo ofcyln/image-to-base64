@@ -1,3 +1,72 @@
-<main>
+<main class="d-flex flex-md-row flex-lg-row flex-xl-row flex-column">
+	<article class="flex-column flex ml-3 mr-3">
+		<p>
+			<abbr title="binary-to-text encoding schemes">Base64</abbr> CSS Generator will generate
+			base64
+			encoded data from an image file. This data can then be used in CSS files which saves the
+			browser from having to make additional HTTP requests for the external resources, and can
+			therefore increase page loading speed with less time. Keep in mind that base64 encoding
+			will make the image
+			file larger by approximately 30%, because CSS files are cached by the browser, it might
+			still
+			be faster than loading images each time you visit a new page on your website.
+		</p>
 
+		<form class="form-horizontal" role="form" id="form-js">
+			<label class="control-label" for="file">Upload image file here</label>
+			<input type="file" id="file" class="form-control" accept="image/*">
+			<p class="text-center">~ OR ~</p>
+			<label class="control-label" for="file">Drag &amp; Drop image file here</label>
+			<div id="dropTarget" class="drop-zone">Drop your image here</div>
+		</form>
+
+		<div id="result" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+	</article>
+
+	<article class="flex-column flex ml-3 mr-3 mt-md-0 mt-5">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Web browser support</h5>
+
+				<p class="card-text">As of March 2012, Data URIs are supported by the following web browsers:</p>
+
+				<article class="card-text">
+					<ul>
+						<b class="infoButton"></b>
+
+						<li>
+							<b class="infoButton">Gecko-based</b>, such as Firefox, SeaMonkey, XeroBank, Camino,
+							Fennec and K-Meleon
+						</li>
+
+						<li>
+							<b class="infoButton">Konqueror</b>, via KDE's KIO slaves input/output system
+						</li>
+
+						<li>
+							<b class="infoButton">Opera</b> (including devices such as the Nintendo DSi or Wii)
+						</li>
+
+						<li>
+							<b class="infoButton">WebKit-based</b>, such as Safari (including iOS), Android's
+							browser, Kindle 4's browser, Epiphany and Midori (WebKit is a derivative of Konqueror's
+							KHTML engine, but Mac OS X does not share the KIO architecture so the implementations
+							are different), and Webkit/Chromium-based, such as Chrome
+						</li>
+
+						<li>
+							<b class="infoButton">Trident</b>
+
+							<ul>
+								<li>
+									Internet Explorer 9: Internet Explorer 9 does not have 32KB limitation and
+									supports more elements.
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</article>
+			</div>
+		</div>
+	</article>
 </main>
