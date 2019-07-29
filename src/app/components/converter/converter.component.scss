@@ -19,8 +19,7 @@ label {
 	border-radius: 5px;
 	padding: 40px;
 	text-align: center;
-	color: #5cb85a;
-	text-shadow: 1px 1px 1px #c2c2c2;
+	color: #e56465;
 	font-size: 25px;
 	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAVdEVYdENyZWF0aW9uIFRpbWUANS8yNC8xMKfu+JsAAAA5SURBVDiNYzQ2NpZiIAKcOXPmGTHqmIhRRAoYNXDUwMFgIOP///+JUmhiYkJUjhr8Xh41cNRAMgAAw6QH16bUnKsAAAAASUVORK5CYII=') repeat;
 }
@@ -45,8 +44,7 @@ label {
 
 .control-label {
 	font-size: 20px;
-	color: #797979;
-	text-shadow: 1px 1px 5px #d8d8d8;
+	color: #e9a308;
 	font-weight: bold;
 	padding-bottom: 10px;
 }
@@ -57,8 +55,8 @@ label {
 	margin: 10px;
 }
 
-.infoButton {
-	color: #428bca;
+.info-button {
+	color: #e9a308;
 }
 
 #result img {
