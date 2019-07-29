@@ -6,7 +6,15 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./converter.component.scss'],
 })
 export class ConverterComponent implements OnInit {
+    selectedFile: File;
+
     constructor() {}
 
     ngOnInit() {}
+
+    onFileChanged(event: any) {
+        this.selectedFile = event.target.files[0];
+
+        console.log(this.selectedFile);
+    }
 }
