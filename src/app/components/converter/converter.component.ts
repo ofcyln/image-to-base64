@@ -7,21 +7,28 @@ import { FileSystemDirectoryEntry, FileSystemFileEntry, NgxFileDropEntry } from 
     styleUrls: ['./converter.component.scss'],
 })
 export class ConverterComponent implements OnInit {
-    file: File;
+    public imagePath;
+    public file: File;
+    public imgURL: any;
+    public message: string;
     public files: NgxFileDropEntry[] = [];
 
     constructor() {}
 
     ngOnInit() {}
 
-    fileChanged(ev) {
-        this.file = ev.target.files[0];
+    fileChanged(files) {
+        let reader = new FileReader();
 
-        let fileReader = new FileReader();
-        fileReader.onload = (e) => {
-            console.log(fileReader.result);
+        this.imagePath = files;
+
+        reader.readAsDataURL(files[0]);
+
+        reader.onload = (_event) => {
+            this.imgURL = reader.result;
+
+            console.log(reader.result);
         };
-        fileReader.readAsText(this.file);
     }
 
     public dropped(files: NgxFileDropEntry[]) {

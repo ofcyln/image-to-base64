@@ -28,14 +28,22 @@
 					<article class="d-flex flex-column">
 						<p class="text-secondary">Drop your image here</p>
 
-						<input
+						<label for="upload-file" class="btn btn-warning mr-auto ml-auto cursor--pointer">
+							Browse Files
+							<input
+								#file
 								type="file"
-								class="btn btn-warning mr-auto ml-auto"
-								(change)="fileChanged($event)" value="Browse Files" >
+								id="upload-file"
+								class="d-none"
+								accept='image/*'
+								(change)="fileChanged(file.files)">
+						</label>
 					</article>
 				</ng-template>
 			</ngx-file-drop>
 		</section>
+
+		<span style="color:red;" *ngIf="message">{{message}}</span>
 
 		<div *ngIf="files.length"
 		     id="result"
@@ -48,6 +56,8 @@
 				</p>
 			</article>
 		</div>
+
+		<img [src]="imgURL" height="200" *ngIf="imgURL">
 	</article>
 
 	<article class="flex-column flex ml-3 mr-3 mt-md-0 mt-5">
