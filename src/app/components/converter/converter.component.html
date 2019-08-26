@@ -12,22 +12,42 @@
 			be faster than loading images each time you visit a new page on your website.
 		</p>
 
-		<form class="form-horizontal" role="form" id="form-js">
-			<label class="control-label" for="file">Upload image file</label>
-			<input
-					type="file"
-					id="file"
-					class="form-control"
-					accept="image/*"
-					(change)="onFileChanged($event)">
+		<section class="form-horizontal" id="form-js">
+			<p class="control-label">Drag &amp; Drop or Upload image file here</p>
 
-			<p class="text-center">~ OR ~</p>
+			<ngx-file-drop
+					class="drop-zone"
+					id="dropTarget"
+					dropZoneLabel="Drop files here"
+					(onFileDrop)="dropped($event)"
+					(onFileOver)="fileOver($event)"
+					(onFileLeave)="fileLeave($event)">
+				<ng-template
+						ngx-file-drop-content-tmp
+						let-openFileSelector="openFileSelector">
+					<article class="d-flex flex-column">
+						<p class="text-secondary">Drop your image here</p>
 
-			<label class="control-label" for="file">Drag &amp; Drop image file</label>
-			<div id="dropTarget" class="drop-zone" cdkDrag>Drop your image here</div>
-		</form>
+						<input
+								type="file"
+								class="btn btn-warning mr-auto ml-auto"
+								(change)="fileChanged($event)" value="Browse Files" >
+					</article>
+				</ng-template>
+			</ngx-file-drop>
+		</section>
 
-		<div id="result" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+		<div *ngIf="files.length"
+		     id="result"
+		     class="d-flex flex-column">
+			<article class="table">
+				<p class="border-bottom pb-2 pt-2">Name</p>
+
+				<p *ngFor="let item of files; let i=index">
+					<i><strong>{{ item.relativePath }}</strong></i>
+				</p>
+			</article>
+		</div>
 	</article>
 
 	<article class="flex-column flex ml-3 mr-3 mt-md-0 mt-5">

@@ -73,3 +73,16 @@
 .color--matte-red {
 	color: #8b4242;
 }
+
+.drop-zone {
+	.ngx-file-drop__drop-zone {
+		border: 5px dashed #989797 !important;
+		-webkit-border-radius: 10px !important;
+		-moz-border-radius: 10px !important;
+		border-radius: 10px !important;
+		height: initial !important;
+		padding: 40px;
+		font-size: 25px;
+		background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAVdEVYdENyZWF0aW9uIFRpbWUANS8yNC8xMKfu+JsAAAA5SURBVDiNYzQ2NpZiIAKcOXPmGTHqmIhRRAoYNXDUwMFgIOP///+JUmhiYkJUjhr8Xh41cNRAMgAAw6QH16bUnKsAAAAASUVORK5CYII=') repeat;
+	}
+}
