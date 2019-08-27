@@ -1,59 +1,57 @@
-import { Component, OnInit } from '@angular/core';
-import { FileSystemDirectoryEntry, FileSystemFileEntry, NgxFileDropEntry } from 'ngx-file-drop';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-converter',
     templateUrl: './converter.component.html',
     styleUrls: ['./converter.component.scss'],
 })
-export class ConverterComponent implements OnInit {
-    public imagePath;
-    public file: File;
+export class ConverterComponent {
+    public droppedFiles: File[] = [];
+    public uploadedFiles: File[] = [];
     public imgURL: any;
-    public message: string;
-    public files: NgxFileDropEntry[] = [];
+    public imageSrc: string | ArrayBuffer;
 
     constructor() {}
 
-    ngOnInit() {}
+    onDropHandler(droppedFiles: Array<File>) {
+        this.droppedFiles = [];
+        this.uploadedFiles = [];
 
-    fileChanged(files) {
         let reader = new FileReader();
 
-        this.imagePath = files;
+        this.droppedFiles.push(...droppedFiles);
 
-        reader.readAsDataURL(files[0]);
+        const droppedFile = droppedFiles[0];
 
-        reader.onload = (_event) => {
-            this.imgURL = reader.result;
+        console.log('dropped file', droppedFile);
 
-            console.log(reader.result);
+        reader.readAsDataURL(droppedFiles[0]);
+
+        reader.onload = (event) => {
+            this.imageSrc = reader.result;
+
+            console.log('dropped reader onload result', this.imageSrc);
         };
     }
 
-    public dropped(files: NgxFileDropEntry[]) {
-        this.files = files;
-        for (const droppedFile of files) {
-            // Is it a file?
-            if (droppedFile.fileEntry.isFile) {
-                const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
-                fileEntry.file((file: File) => {
-                    // Here you can access the real file
-                    console.log(droppedFile.relativePath, file);
-                });
-            } else {
-                // It was a directory (empty directories are added, otherwise only files)
-                const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
-                console.log(droppedFile.relativePath, fileEntry);
-            }
-        }
-    }
+    onUploadByButton(uploadedFiles: FileList) {
+        this.uploadedFiles = [];
+        this.droppedFiles = [];
 
-    public fileOver(event) {
-        console.log(event);
-    }
+        let reader = new FileReader();
 
-    public fileLeave(event) {
-        console.log(event);
+        const uploadedFile = uploadedFiles[0];
+
+        this.uploadedFiles.push(uploadedFile);
+
+        console.log('uploaded file', uploadedFile);
+
+        reader.readAsDataURL(uploadedFiles[0]);
+
+        reader.onload = (event) => {
+            this.imgURL = reader.result;
+
+            console.log('uploaded file reader onload result', this.imgURL);
+        };
     }
 }

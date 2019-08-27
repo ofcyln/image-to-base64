@@ -15,49 +15,59 @@
 		<section class="form-horizontal" id="form-js">
 			<p class="control-label">Drag &amp; Drop or Upload image file here</p>
 
-			<ngx-file-drop
-					class="drop-zone"
-					id="dropTarget"
-					dropZoneLabel="Drop files here"
-					(onFileDrop)="dropped($event)"
-					(onFileOver)="fileOver($event)"
-					(onFileLeave)="fileLeave($event)">
-				<ng-template
-						ngx-file-drop-content-tmp
-						let-openFileSelector="openFileSelector">
-					<article class="d-flex flex-column">
-						<p class="text-secondary">Drop your image here</p>
+			<section
+				class="drop-zone"
+				id="dropTarget"
+				appDragDrop
+				(dropHandler)="onDropHandler($event)">
+				<article class="d-flex flex-column">
+					<p class="text-secondary">Drop your image here</p>
 
-						<label for="upload-file" class="btn btn-warning mr-auto ml-auto cursor--pointer">
-							Browse Files
-							<input
-								#file
-								type="file"
-								id="upload-file"
-								class="d-none"
-								accept='image/*'
-								(change)="fileChanged(file.files)">
-						</label>
-					</article>
-				</ng-template>
-			</ngx-file-drop>
+					<label for="upload-file" class="btn btn-warning mr-auto ml-auto cursor--pointer">
+						Browse Files
+						<input
+							#file
+							type="file"
+							id="upload-file"
+							class="d-none"
+							accept='image/*'
+							(change)="onUploadByButton(file.files)">
+					</label>
+				</article>
+			</section>
 		</section>
 
-		<span style="color:red;" *ngIf="message">{{message}}</span>
+		<section class="drag-result-container mt-3" *ngIf="imageSrc && droppedFiles.length > 0">
+			<img [src]="imageSrc" height="150">
+		</section>
 
-		<div *ngIf="files.length"
-		     id="result"
+		<div *ngIf="droppedFiles.length > 0"
+		     id="droppedFilesResult"
 		     class="d-flex flex-column">
 			<article class="table">
 				<p class="border-bottom pb-2 pt-2">Name</p>
 
-				<p *ngFor="let item of files; let i=index">
-					<i><strong>{{ item.relativePath }}</strong></i>
+				<p *ngFor="let item of droppedFiles; let i=index">
+					<i><strong>{{ item.name }}</strong></i>
 				</p>
 			</article>
 		</div>
 
-		<img [src]="imgURL" height="200" *ngIf="imgURL">
+		<section class="upload-result-container mt-3" *ngIf="imgURL && uploadedFiles.length > 0">
+			<img [src]="imgURL" height="150">
+		</section>
+
+		<div *ngIf="uploadedFiles.length > 0"
+		     id="uploadedFilesResult"
+		     class="d-flex flex-column">
+			<article class="table">
+				<p class="border-bottom pb-2 pt-2">Name</p>
+
+				<p *ngFor="let item of uploadedFiles; let i=index">
+					<i><strong>{{ item.name }}</strong></i>
+				</p>
+			</article>
+		</div>
 	</article>
 
 	<article class="flex-column flex ml-3 mr-3 mt-md-0 mt-5">
