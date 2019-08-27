@@ -37,34 +37,58 @@
 			</section>
 		</section>
 
-		<section class="drag-result-container mt-3" *ngIf="imageSrc && droppedFiles.length > 0">
-			<img [src]="imageSrc" height="150">
-		</section>
-
 		<div *ngIf="droppedFiles.length > 0"
 		     id="droppedFilesResult"
-		     class="d-flex flex-column">
-			<article class="table">
-				<p class="border-bottom pb-2 pt-2">Name</p>
+		     class="d-flex flex-column mt-3">
+			<article class="d-flex flex-row">
+				<p class="pr-5 mb-0 mw-100">Image Preview</p>
 
-				<p *ngFor="let item of droppedFiles; let i=index">
+				<div class="flex-grow-1">
+					<img [src]="imageSrc" height="150">
+				</div>
+			</article>
+
+			<article class="d-flex flex-row">
+				<p class="pr-5 mb-0 mw-100">Name</p>
+
+				<p class="flex-grow-1" *ngFor="let item of droppedFiles; let i=index">
 					<i><strong>{{ item.name }}</strong></i>
+				</p>
+			</article>
+
+			<article class="d-flex flex-row">
+				<p class="pr-5 mb-0 mw-100">Data URI</p>
+
+				<p class="flex-grow-1">
+					<textarea class="form-control" rows="6" [value]="imageSrc"></textarea>
 				</p>
 			</article>
 		</div>
 
-		<section class="upload-result-container mt-3" *ngIf="imgURL && uploadedFiles.length > 0">
-			<img [src]="imgURL" height="150">
-		</section>
-
 		<div *ngIf="uploadedFiles.length > 0"
 		     id="uploadedFilesResult"
-		     class="d-flex flex-column">
-			<article class="table">
-				<p class="border-bottom pb-2 pt-2">Name</p>
+		     class="d-flex flex-column mt-3">
+			<article class="d-flex flex-row">
+				<p class="pr-5 mb-0 mw-100">Image Preview</p>
 
-				<p *ngFor="let item of uploadedFiles; let i=index">
+				<div class="flex-grow-1">
+					<img [src]="imgURL" height="150">
+				</div>
+			</article>
+
+			<article class="d-flex flex-row">
+				<p class="pr-5 mb-0 mw-100">Name</p>
+
+				<p class="flex-grow-1" *ngFor="let item of uploadedFiles; let i=index">
 					<i><strong>{{ item.name }}</strong></i>
+				</p>
+			</article>
+
+			<article class="d-flex flex-row">
+				<p class="pr-5 mb-0 mw-100">Data URI</p>
+
+				<p class="flex-grow-1">
+					<textarea class="form-control" rows="6" [value]="imgURL"></textarea>
 				</p>
 			</article>
 		</div>

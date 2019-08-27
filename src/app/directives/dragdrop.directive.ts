@@ -13,12 +13,14 @@ export class DragDropDirective {
     @HostListener('drop', ['$event'])
     onDrop(event: DragEvent) {
         event.preventDefault();
+
         this.active = false;
 
         const { dataTransfer } = event;
 
         if (dataTransfer.items) {
             const files = [];
+
             for (let i = 0; i < dataTransfer.items.length; i++) {
                 // If dropped items aren't files, reject them
                 if (dataTransfer.items[i].kind === 'file') {
@@ -42,6 +44,7 @@ export class DragDropDirective {
     onDragOver(event: DragEvent) {
         event.stopPropagation();
         event.preventDefault();
+
         this.active = true;
     }
 
