@@ -12,22 +12,86 @@
 			be faster than loading images each time you visit a new page on your website.
 		</p>
 
-		<form class="form-horizontal" role="form" id="form-js">
-			<label class="control-label" for="file">Upload image file</label>
-			<input
-					type="file"
-					id="file"
-					class="form-control"
-					accept="image/*"
-					(change)="onFileChanged($event)">
+		<section class="form-horizontal" id="form-js">
+			<p class="control-label">Drag &amp; Drop or Upload image file here</p>
 
-			<p class="text-center">~ OR ~</p>
+			<section
+				class="drop-zone"
+				id="dropTarget"
+				appDragDrop
+				(dropHandler)="onDropHandler($event)">
+				<article class="d-flex flex-column">
+					<p class="text-secondary">Drop your image here</p>
 
-			<label class="control-label" for="file">Drag &amp; Drop image file</label>
-			<div id="dropTarget" class="drop-zone" cdkDrag>Drop your image here</div>
-		</form>
+					<label for="upload-file" class="btn btn-warning mr-auto ml-auto cursor--pointer">
+						Browse Files
+						<input
+							#file
+							type="file"
+							id="upload-file"
+							class="d-none"
+							accept='image/*'
+							(change)="onUploadByButton(file.files)">
+					</label>
+				</article>
+			</section>
+		</section>
 
-		<div id="result" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+		<div *ngIf="droppedFiles.length > 0"
+		     id="droppedFilesResult"
+		     class="d-flex flex-column mt-3">
+			<article class="d-flex flex-row">
+				<p class="pr-5 mb-0 mw-100">Image Preview</p>
+
+				<div class="flex-grow-1">
+					<img [src]="imageSrc" height="150">
+				</div>
+			</article>
+
+			<article class="d-flex flex-row">
+				<p class="pr-5 mb-0 mw-100">Name</p>
+
+				<p class="flex-grow-1" *ngFor="let item of droppedFiles; let i=index">
+					<i><strong>{{ item.name }}</strong></i>
+				</p>
+			</article>
+
+			<article class="d-flex flex-row">
+				<p class="pr-5 mb-0 mw-100">Data URI</p>
+
+				<p class="flex-grow-1">
+					<textarea class="form-control" rows="6" [value]="imageSrc"></textarea>
+				</p>
+			</article>
+		</div>
+
+		<div *ngIf="uploadedFiles.length > 0"
+		     id="uploadedFilesResult"
+		     class="d-flex flex-column mt-3">
+			<article class="d-flex flex-row">
+				<p class="pr-5 mb-0 mw-100">Image Preview</p>
+
+				<div class="flex-grow-1">
+					<img [src]="imgURL" height="150">
+				</div>
+			</article>
+
+			<article class="d-flex flex-row">
+				<p class="pr-5 mb-0 mw-100">Name</p>
+
+				<p class="flex-grow-1" *ngFor="let item of uploadedFiles; let i=index">
+					<i><strong>{{ item.name }}</strong></i>
+				</p>
+			</article>
+
+			<article class="d-flex flex-row">
+				<p class="pr-5 mb-0 mw-100">Data URI</p>
+
+				<p class="flex-grow-1">
+					<textarea class="form-control" rows="6" [value]="imgURL"></textarea>
+				</p>
+			</article>
+		</div>
 	</article>
 
 	<article class="flex-column flex ml-3 mr-3 mt-md-0 mt-5">

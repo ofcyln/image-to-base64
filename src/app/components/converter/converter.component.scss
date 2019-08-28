@@ -14,16 +14,6 @@ label {
 	font-weight: bold;
 }
 
-.drop-zone {
-	border: 5px dashed #989797;
-	border-radius: 5px;
-	padding: 40px;
-	text-align: center;
-	color: #e56465;
-	font-size: 25px;
-	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAAVdEVYdENyZWF0aW9uIFRpbWUANS8yNC8xMKfu+JsAAAA5SURBVDiNYzQ2NpZiIAKcOXPmGTHqmIhRRAoYNXDUwMFgIOP///+JUmhiYkJUjhr8Xh41cNRAMgAAw6QH16bUnKsAAAAASUVORK5CYII=') repeat;
-}
-
 .drop-zone.hover {
 	background-color: #c2d2fb;
 	-webkit-transition: .25s;
@@ -71,4 +61,12 @@ label {
 
 #result table th {
 	width: 15%;
+}
+
+.mw-100 {
+	min-width: 200px;
+}
+
+.drop-zone-active {
+	background-color: #ffc107ab;
 }
