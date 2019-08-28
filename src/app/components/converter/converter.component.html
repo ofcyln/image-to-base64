@@ -16,15 +16,15 @@
 			<p class="control-label">Drag &amp; Drop or Upload image file here</p>
 
 			<section
-				class="drop-zone"
+				class="drop-zone mb-5"
 				id="dropTarget"
 				appDragDrop
 				(dropHandler)="onDropHandler($event)">
 				<article class="d-flex flex-column">
-					<p class="text-secondary">Drop your image here</p>
+					<p class="text-secondary text-center mb-3">Drop your image here</p>
 
 					<label for="upload-file" class="btn btn-warning mr-auto ml-auto cursor--pointer">
-						Browse Files
+						Browse Image
 						<input
 							#file
 							type="file"
@@ -37,61 +37,98 @@
 			</section>
 		</section>
 
-		<div *ngIf="droppedFiles.length > 0"
-		     id="droppedFilesResult"
-		     class="d-flex flex-column mt-3">
-			<article class="d-flex flex-row">
-				<p class="pr-5 mb-0 mw-100">Image Preview</p>
+		<form
+				[formGroup]="textAreaForm">
+			<div *ngIf="droppedFiles.length > 0"
+			     id="droppedFilesResult"
+			     class="d-flex flex-column mt-3">
+				<article class="d-flex flex-row">
+					<p class="pr-5 mb-0 mw-100 font-bold">Name:</p>
 
-				<div class="flex-grow-1">
-					<img [src]="imageSrc" height="150">
-				</div>
-			</article>
+					<p class="flex-grow-1 font-size-sm" *ngFor="let item of droppedFiles; let i=index">
+						<i>{{ item.name }}</i>
+					</p>
+				</article>
 
-			<article class="d-flex flex-row">
-				<p class="pr-5 mb-0 mw-100">Name</p>
+				<article class="d-flex flex-row">
+					<p class="pr-5 mb-0 mw-100 font-bold">Image Preview:</p>
 
-				<p class="flex-grow-1" *ngFor="let item of droppedFiles; let i=index">
-					<i><strong>{{ item.name }}</strong></i>
-				</p>
-			</article>
+					<div class="flex-grow-1 mb-3">
+						<img [src]="imageSrc" height="150">
+					</div>
+				</article>
 
-			<article class="d-flex flex-row">
-				<p class="pr-5 mb-0 mw-100">Data URI</p>
+				<article class="d-flex flex-row">
+					<p class="pr-5 mb-0 mw-100 font-bold">Data URI:</p>
 
-				<p class="flex-grow-1">
-					<textarea class="form-control" rows="6" [value]="imageSrc"></textarea>
-				</p>
-			</article>
-		</div>
+					<p class="flex-grow-1">
+						<textarea class="form-control font-size-sm" rows="6" formControlName="droppedURI"></textarea>
+					</p>
+				</article>
 
-		<div *ngIf="uploadedFiles.length > 0"
-		     id="uploadedFilesResult"
-		     class="d-flex flex-column mt-3">
-			<article class="d-flex flex-row">
-				<p class="pr-5 mb-0 mw-100">Image Preview</p>
+				<article class="d-flex flex-row">
+					<p class="pr-5 mb-0 mw-100 font-bold">Image Tag:</p>
 
-				<div class="flex-grow-1">
-					<img [src]="imgURL" height="150">
-				</div>
-			</article>
+					<p class="flex-grow-1">
+						<textarea class="form-control font-size-sm" rows="6" formControlName="droppedImgTagName"></textarea>
+					</p>
+				</article>
 
-			<article class="d-flex flex-row">
-				<p class="pr-5 mb-0 mw-100">Name</p>
+				<article class="d-flex flex-row">
+					<p class="pr-5 mb-0 mw-100 font-bold">CSS Background:</p>
 
-				<p class="flex-grow-1" *ngFor="let item of uploadedFiles; let i=index">
-					<i><strong>{{ item.name }}</strong></i>
-				</p>
-			</article>
+					<p class="flex-grow-1">
+						<textarea class="form-control font-size-sm" rows="6" formControlName="droppedBackgroundStyle"></textarea>
+					</p>
+				</article>
+			</div>
 
-			<article class="d-flex flex-row">
-				<p class="pr-5 mb-0 mw-100">Data URI</p>
+			<div *ngIf="uploadedFiles.length > 0"
+			     id="uploadedFilesResult"
+			     class="d-flex flex-column mt-3">
+				<article class="d-flex flex-row">
+					<p class="pr-5 mb-0 mw-100 font-bold">Name:</p>
 
-				<p class="flex-grow-1">
-					<textarea class="form-control" rows="6" [value]="imgURL"></textarea>
-				</p>
-			</article>
-		</div>
+					<p class="flex-grow-1 font-size-sm" *ngFor="let item of uploadedFiles; let i=index">
+						<i>{{ item.name }}</i>
+					</p>
+				</article>
+
+				<article class="d-flex flex-row">
+					<p class="pr-5 mb-0 mw-100 font-bold">Image Preview:</p>
+
+					<div class="flex-grow-1 mb-3">
+						<img [src]="imgURL" height="150">
+					</div>
+				</article>
+
+				<article class="d-flex flex-row">
+					<p class="pr-5 mb-0 mw-100 font-bold">Data URI:</p>
+
+					<p class="flex-grow-1">
+						<textarea class="form-control font-size-sm" rows="6" formControlName="uploadedURI"></textarea>
+					</p>
+				</article>
+
+				<article class="d-flex flex-row">
+					<p class="pr-5 mb-0 mw-100 font-bold">Image Tag:</p>
+
+					<p class="flex-grow-1">
+						<textarea class="form-control font-size-sm" rows="6" formControlName="uploadedImgTagName"></textarea>
+					</p>
+				</article>
+
+				<article class="d-flex flex-row">
+					<p class="pr-5 mb-0 mw-100 font-bold">CSS Background:</p>
+
+					<p class="flex-grow-1">
+						<textarea class="form-control font-size-sm" rows="6" formControlName="uploadedBackgroundStyle"></textarea>
+					</p>
+				</article>
+			</div>
+		</form>
+
+
 	</article>
 
 	<article class="flex-column flex ml-3 mr-3 mt-md-0 mt-5">
