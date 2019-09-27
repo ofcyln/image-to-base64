@@ -1,6 +1,7 @@
 {
 	"name": "image-to-base64",
 	"version": "0.0.0",
+	"private": true,
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
@@ -20,7 +21,6 @@
 		"resources": "node resources/generate-resources.js",
 		"precommit": "lint-staged"
 	},
-	"private": false,
 	"lint-staged": {
 		"src/**/*.ts": [
 			"npm run format",
